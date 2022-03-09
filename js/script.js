@@ -50,33 +50,6 @@ const pib = /Producto interior bruto a precios de mercado/;
 // CHARTJS
 let chartUno, chartDos, chartTres;
 
-
-///////////////////   EVENTOS  //////////////////////
-$('#buscarCA').click(function() {
-    ccaa = new RegExp($('#selectCA').val());
-
-    obtenerURL(urlHipotecasMensual)
-        .then( dataMes => dataMes.json() )
-        .then( dataMes => {
-            imprimirDatos(dataMes, ccaa);
-            return obtenerAPIS();
-            }
-        )
-        .catch( error => console.log(error) );
-});
-
-$('#buscarTipoFinca').click(function() {
-    let tipoFinca = new RegExp($('#selectTipoFinca').val());
-    obtenerURL(urlHipotecasMensual)
-        .then( data => data.json() )
-        .then( data => {
-            dibujarCirculo(data, ccaa, numImporte, tipoFinca);
-            tituloFinca.innerHTML = 'Tipo hipotecas - ' + limpiarPatron(tipoFinca) + ' - ' + limpiarPatron(ccaa);
-        }
-    )
-    .catch( error => console.log(error) );
-});
-
 // Retorna la diferencia de dos valores dados limitado a 1 decimal
 function getDiferenciaIndices(dato1, dato2) {
     return (dato1 - dato2).toFixed(1);
@@ -388,7 +361,33 @@ function dibujarCirculo(datosApi, ccaa, numImporte, tipoFinca){
 
 
 ///////////////////     MAIN  ///////////////////
-$(document).ready(function(){
+$(document).ready(function() {
+
+    ///////////////////   EVENTOS  //////////////////////
+    $('#buscarCA').click(function() {
+        ccaa = new RegExp($('#selectCA').val());
+
+        obtenerURL(urlHipotecasMensual)
+            .then( dataMes => dataMes.json() )
+            .then( dataMes => {
+                imprimirDatos(dataMes, ccaa);
+                return obtenerAPIS();
+                }
+            )
+            .catch( error => console.log(error) );
+    });
+
+    $('#buscarTipoFinca').click(function() {
+        let tipoFinca = new RegExp($('#selectTipoFinca').val());
+        obtenerURL(urlHipotecasMensual)
+            .then( data => data.json() )
+            .then( data => {
+                dibujarCirculo(data, ccaa, numImporte, tipoFinca);
+                tituloFinca.innerHTML = 'Tipo hipotecas - ' + limpiarPatron(tipoFinca) + ' - ' + limpiarPatron(ccaa);
+            }
+        )
+        .catch( error => console.log(error) );
+    });
 
     // Retirar caja aviso de carga de API
     cargaAPI.slideUp(800);
