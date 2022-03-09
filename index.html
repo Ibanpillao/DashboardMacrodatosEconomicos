@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="eS">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DWEC04 Tarea Evaluativa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Raleway:wght@200&display=swap" rel="stylesheet">  
+    <link rel="stylesheet" href="css/estilos.css">
+  
+</head>
+<body>
+
+    <!-- Cargar API -->
+    <div id="cargaApi">Cargando API...</div>
+
+    <!-- MAIN -->
+    <main id="contenedor">  
+
+
+        <!-- HEADER -->
+        <header id="tituloWeb"><img title="Logo" src="img/app.svg">
+            <h1>Macrodatos del estado</h1>
+            <div class="alinearHorizotal" id="cajaCA">
+                <select id="selectCA" value=''></select> 
+                <input title="Buscar" id="buscarCA" type="button"/>
+            </div>
+        </header>
+
+        <!-- INDICADORES -->
+        <article id="art1" class="indicador"></article>
+        <article id="art2" class="indicador"></article>
+        <article id="art3" class="indicador"></article>
+        <article id="art4" class="indicador"></article>
+        <article id="art5" class="indicador">
+            <h3>Evolución de hipotecas</h3>
+            <canvas id="canvasUno"></canvas>    
+        </article>
+        <article id="art6" class="indicador">
+            <h3 id="tituloImporte"></h3>
+            <canvas id="canvasDos"></canvas>
+        </article>
+        <article id="art7" class="indicador">
+            <h3 id="tituloFinca"></h3>
+            <canvas id="canvasTres"></canvas>
+            <div id="cajaFinca" class="alinearHorizotal">
+                <select id="selectTipoFinca" value=''>
+                    <option selected value="Tipo de hipoteca"></option>
+                    <optgroup label="Urbanas">
+                        <option>Viviendas</option>
+                        <option>Solares</option>
+                        <option value="Otros">Otras fincas urbanas</option>
+                    </optgroup>
+                    <optgroup label="Rústicas">
+                        <option value="Total fincas rústicas">Fincas rústicas</option>
+                    </optgroup>
+                </select>
+                <input id="buscarTipoFinca" type="button" value="Buscar"/>
+            </div>
+        </article>
+        <article id="art8" class="indicador"></article>
+        <article id="art9" class="indicador"></article>
+        <article id="art10">
+            <h3 id="tituloMercado">Indices precios industriales (IPRI) <span>Variación mensual %</span></h3>
+            <div id="cajaMercado"></div>
+        </article>
+        <article id="fuente">Fuente: <a target="_blank" href="https://www.ine.es/dyngs/DataLab/es/manual.html?cid=45"> www.ine.es</article>
+    </main>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
